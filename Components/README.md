@@ -33,3 +33,4 @@ i.e
 - etc.
 
 ## Native Components
+React Native lets you build custom iOS or Android components based on your applications' unique needs. These are your native components and you own them. These are written in native code, which means working with native iOS code in Swift, or native Android code in Java or Kotlin.

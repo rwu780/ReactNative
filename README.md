@@ -15,7 +15,7 @@ React Native is written in JavaScript but renders or generates native code. Alth
 
 ## Basics
 
-[Environment Set-up](Basics/Basic.md))
+[Environment Set-up](Basics/Basic.md)
 
 ## Components
 
