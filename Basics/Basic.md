@@ -52,6 +52,11 @@ npx react-native init <ProjectName>
 npx react-native start
 yarn react-native start // if you use the Yarn package manager, you can use yarn instead of npx
 
+## iOS setup
+cd ios
+bundle install
+bundle exec pod install
+
 # Start application
 # run it on a separate terminal
 npx react-native run-android

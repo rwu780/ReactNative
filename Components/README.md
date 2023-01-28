@@ -4,6 +4,9 @@ Components let you split the UI into independent reusable pieces. When you put a
 
 - [Components](#components)
   - [Core Components](#core-components)
+    - [View](#view)
+    - [Text](#text)
+    - [ScrollView](#scrollview)
   - [Community components](#community-components)
   - [Native Components](#native-components)
 
@@ -19,6 +22,21 @@ Components
 - TextInput
 - ScrollView
 
+### View
+A view is the basic building block of the user interface. The view houses all elements within it. It's the very first component you will need in your app. View is also the most fundamental component for building your mobile UI. 
+
+View is a container that supports the layout of your mobile screen. You can style, flexbox, touch handling, and provide accessibility controls within the view.
+
+The view components can also be nested inside other views, and can have zero or many children within it.
+
+### Text
+Component that display text
+
+### ScrollView
+The ScrollView component must be bounded by a height (i.e `flex: 1`)
+
+- horizontal scroll `horizontal={true}`
+- scroll indicator `indicatorStyle={'white'}`
 
 ## Community components
 Addition from the core components
