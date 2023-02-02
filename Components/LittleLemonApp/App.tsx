@@ -12,6 +12,10 @@ import LittleLemonFooter from './components/LittleLemonFooter';
 
 import LittleLemonHeader from './components/LittleLemonHeader';
 import WelcomeScreen from './components/WelcomeScreen';
+import MenuItems from './components/MenuItems';
+import MenuSectionItems from './components/MenuSectionLists';
+import FeedbackForm from './components/FeedbackForm';
+import LoginScreen from './components/LoginScreen';
 
 function App(): JSX.Element {
   return (
@@ -27,7 +31,11 @@ function App(): JSX.Element {
         paddingTop: 30
         
       }}>
-        <WelcomeScreen />
+        {/* <WelcomeScreen /> */}
+        {/* <MenuItems /> */}
+        {/* <MenuSectionItems /> */}
+        {/* <FeedbackForm /> */}
+        <LoginScreen />
       </View>
       <View style={{
         backgroundColor: '#495E57'

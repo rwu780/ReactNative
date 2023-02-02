@@ -7,6 +7,13 @@ Components let you split the UI into independent reusable pieces. When you put a
     - [View](#view)
     - [Text](#text)
     - [ScrollView](#scrollview)
+    - [FlatList](#flatlist)
+    - [SectionList](#sectionlist)
+    - [TextInput](#textinput)
+    - [Pressable](#pressable)
+      - [HitRect](#hitrect)
+    - [Image](#image)
+    - [Flexbox](#flexbox)
   - [Community components](#community-components)
   - [Native Components](#native-components)
 
@@ -37,6 +44,129 @@ The ScrollView component must be bounded by a height (i.e `flex: 1`)
 
 - horizontal scroll `horizontal={true}`
 - scroll indicator `indicatorStyle={'white'}`
+
+However, slow rendering/performance for large lists
+
+`keyboardDismissMode` : dismisses virtual keyboard when user scrolls
+
+### FlatList
+- Faster performance than ScrollView. Rendering performance not affected by size of the list
+- Lazy rendering, only render the item shown on screen
+
+```
+<FlatList
+  data={items}
+  keyExtractor= {extractor}
+  renderItem={renderItem} />
+
+const extractor = (item) => item.id
+
+const renderItem = ({item}) => {
+  <Item name={item.name} />;
+}
+
+```
+
+### SectionList
+React Native component, combineds FlatList features with section support
+- Lazy rendering
+- Inherits ScrollView props
+- differs
+  - It provide sections headers and section separators
+
+
+```
+<SectionList
+  sections={items} // array of list sections
+  renderItem={renderItem} // default renderer
+  />
+
+```
+
+### TextInput
+
+```
+const [text, onChangeText] = useState('');
+
+<TextInput
+  style={styles.input} // pass styles to TextInput
+  onChangeText={onChangeText} // callback to handle 
+  placeholder="First Name" // default text in input box
+  value={firstName} // value displated in input box
+  keyboardType="numeric"
+>
+
+```
+
+### Pressable
+Pressable is a core component from React Native. It can detect various stages of press interactions from the user, including on any child componens. The Pressable component is wrapped around its child elemtns which then become Pressable by the user.
+
+```
+<Pressable 
+  onPress={onPressFunction}
+  onPressIn={...} // call when press activated
+  onPressOut={...} // call when press deactivated, when user's finger move away from the element
+  onLongPress={...} // call when long press, default 500ms or longer
+  delayLongPress // customized onLongPress timing
+
+  >
+  <Text>I'm pressable</Text>
+
+</Pressable>
+
+```
+
+#### HitRect
+HitRect is an optional feature of the Pressable component that you can use to define how far from the React element that a touch is registered. 
+
+### Image
+Core component for displaying images
+- `loadingIndicatorSource` : render the loading indicator
+
+```
+<Image
+  source={require('./img/image.png')} // load local images
+  source={{uri:'https://...'}} // load network images
+  loadingIndicatorSource={}
+  />
+
+```
+### Flexbox
+A component can specify the layout of its children using the Flexbox algorithm. Flexbox is designed to provide a consistent layout on different screen sizes.
+
+- `flex`
+  - define how your items are going to "fill" over the availabe space along your main axis.
+  - Space will be divided according to each element's flex property
+- `flexDirection`
+  - controsl the direction in which the children of a node are laid out. This is also referred to as the main axis.
+  - `column` : align children from top-to-bottom
+  - `row` : align children from left to right
+  - `column-reverse` : align children from bottom to top
+  - `row-reverse` : align children from right to left
+- `direction`
+  - specify the direction in which children and text in a hierarchy should be laid out
+  - `ltr` : text and children are laid out from left to right
+  - `rtl` : text and children are laid out from right to left
+- `justifyContent`
+  - how to align children within the main axis of their container
+  - `flex-start` : align to the start of the container's main axis
+  - `flex-end` : align to the end of the container's main axis
+  - `space-between` : evenly space off children across main axis
+  - `space-around`
+  - `space-evenly`
+- `alignItems`
+  - how to align children along the cross axis of their container
+  - `stretch` : default, stretch children's height to match the container's height
+  - `flex-start` : align children to the start of cross-axis
+  - `flex-end` : align children to the end of the container's cross axis
+  - `center` : center of the cross axis
+  - `baseline` : align children of a container along a common baseline
+
+
+
+
+
+
 
 ## Community components
 Addition from the core components
