@@ -39,12 +39,22 @@ export const SECTION_LIST_MOCK_DATA = [
  * into the data structure a SectionList component expects as its "sections" prop.
  * @see https://reactnative.dev/docs/sectionlist as a reference
  */
-export function getSectionListData(data) {
+export function getSectionListData(inputData) {
   // SECTION_LIST_MOCK_DATA is an example of the data structure you need to return from this function.
   // The title of each section should be the category.
   // The data property should contain an array of menu items. 
   // Each item has the following properties: "id", "title" and "price"
-  return SECTION_LIST_MOCK_DATA;
+  const categories = [... new Set(inputData.map(item => item.category))].map(
+    category => (
+      {
+        title: category,
+        data: inputData.filter(item => item.category === category)
+      }
+    )
+  );
+
+
+  return categories;
 }
 
 export function useUpdateEffect(effect, dependencies = []) {

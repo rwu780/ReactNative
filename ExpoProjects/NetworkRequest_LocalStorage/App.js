@@ -40,6 +40,14 @@ export default function App() {
 
   const fetchData = async() => {
     // 1. Implement this function
+    try {
+      const response = await fetch(API_URL);
+      const json = await response.json();
+      return json.menu.map(menuItem => ({...menuItem, category: menuItem.category.title}));
+
+    } catch(error) {
+      console.log(error);
+    }
     
     // Fetch the menu from the API_URL endpoint. You can visit the API_URL in your browser to inspect the data returned
     // The category field comes as an object with a property called "title". You just need to get the title value and set it under the key "category".
@@ -57,11 +65,14 @@ export default function App() {
         // and then stores it into a SQLite database.
         // After that, every application restart loads the menu from the database
         if (!menuItems.length) {
-          const menuItems = await fetchData();
-          saveMenuItems(menuItems);
+          const latestMenuItems = await fetchData();
+          saveMenuItems(latestMenuItems);
         }
 
-        const sectionListData = getSectionListData(menuItems);
+        menuItems = await getMenuItems();
+        
+        
+        const sectionListData = getSectionListData(menuItems);      
         setData(sectionListData);
       } catch (e) {
         // Handle error
@@ -84,6 +95,9 @@ export default function App() {
           query,
           activeCategories
         );
+        console.log(
+          "aaa", menuItems
+        )
         const sectionListData = getSectionListData(menuItems);
         setData(sectionListData);
       } catch (e) {

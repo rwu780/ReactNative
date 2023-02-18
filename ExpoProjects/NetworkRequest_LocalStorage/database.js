@@ -29,6 +29,20 @@ export async function getMenuItems() {
 
 export function saveMenuItems(menuItems) {
   db.transaction((tx) => {
+    menuItems.forEach(element => {
+      tx.executeSql(
+        'insert into menuitems (uuid, title, price, category) values (?, ?, ?, ?)',
+        [element.id, element.title, element.price, element.category],
+        () => {
+          console.log('Success')
+        },
+        (error) => {
+          console.error(error)
+        }
+      )
+    }
+    );
+
     // 2. Implement a single SQL statement to save all menu data in a table called menuitems.
     // Check the createTable() function above to see all the different columns the table has
     // Hint: You need a SQL statement to insert multiple rows at once.
@@ -55,8 +69,19 @@ export function saveMenuItems(menuItems) {
  * even though the query 'a' it's a substring of 'salad', so the combination of the two filters should be linked with the AND keyword
  *
  */
+
 export async function filterByQueryAndCategories(query, activeCategories) {
-  return new Promise((resolve, reject) => {
-    resolve(SECTION_LIST_MOCK_DATA);
+  return new Promise((resolve) => {
+    db.transaction((tx) => {
+      console.log(`select * from menuitems where title like '%${query}%' and category IN (${activeCategories.map(item => "'" + item+"'").join(',')})`)
+      tx.executeSql(`select * from menuitems where title like '%${query}%' and category IN (${activeCategories.map(item => "'" + item+"'").join(',')})`, [], (_, { rows }) => {
+        console.log("result : ", rows)
+        resolve(rows._array);
+      },
+      (error) => {
+        console.log(error)
+
+      });
+    });
   });
 }
