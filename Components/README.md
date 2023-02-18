@@ -13,6 +13,7 @@ Components let you split the UI into independent reusable pieces. When you put a
     - [Pressable](#pressable)
       - [HitRect](#hitrect)
     - [Image](#image)
+    - [ImageBackground](#imagebackground)
     - [Flexbox](#flexbox)
   - [Community components](#community-components)
   - [Native Components](#native-components)
@@ -131,6 +132,10 @@ Core component for displaying images
   />
 
 ```
+
+### ImageBackground
+Display background image
+
 ### Flexbox
 A component can specify the layout of its children using the Flexbox algorithm. Flexbox is designed to provide a consistent layout on different screen sizes.
 

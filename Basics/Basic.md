@@ -50,6 +50,7 @@ npx react-native init <ProjectName>
 
 # Start Metro
 npx react-native start
+yarn start
 yarn react-native start // if you use the Yarn package manager, you can use yarn instead of npx
 
 ## iOS setup
@@ -61,6 +62,10 @@ bundle exec pod install
 # run it on a separate terminal
 npx react-native run-android
 npx react-native run-ios
+
+yarn start ios
+yarn start android
+
 ```
 
 - Metro : the JavaScript bundler that ships with React Native. Metro "takes in an entry file and various options, and return a single JavaScript file that includes all your code and its dependencies"

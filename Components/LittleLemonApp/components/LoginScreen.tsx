@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
-import { ScrollView, Text, StyleSheet, TextInput, Alert, Pressable } from 'react-native';
+import { ScrollView, Text, StyleSheet, TextInput, Alert, Pressable, Image, View, ImageBackground } from 'react-native';
 
-
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const [email, onChangeEmail] = useState('')
     const [password, onChangePassword] = useState('')
 
+    const image = require('./image.png');
+
     return (
         <ScrollView style={styles.container} keyboardDismissMode="interactive">
+            <View style={styles.logoView}>
+                <Image style={styles.imageStyle} source={image} />
+            
+                <Text style={styles.logoText}>Little Lemon</Text>
+            </View>
             <Text style={styles.headerText}>Welcome to Little Lemon</Text>
             {!isLoggedIn
                 ? (<>
@@ -41,6 +47,12 @@ export default function LoginScreen() {
                         <Pressable style={styles.button} onPress={() => setIsLoggedIn(!isLoggedIn)}>
                             <Text style={styles.buttonText}>Log out</Text>
                         </Pressable>
+                        <Pressable style={styles.button} onPress={() => navigation.navigate("Welcome")}>
+                            <Text style={styles.buttonText}>Go to Welcome</Text>
+                        </Pressable>
+                        <Pressable style={styles.button} onPress={() => navigation.navigate("Preference")}>
+                            <Text style={styles.buttonText}>Go to Preference</Text>
+                        </Pressable>
                     </>
                     
                 )
@@ -53,7 +65,8 @@ export default function LoginScreen() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#495E57'
     },
     headerText: {
         padding: 40,
@@ -88,5 +101,21 @@ const styles = StyleSheet.create({
         color: 'black',
         textAlign: 'center',
         fontSize: 25
+    },
+    imageStyle: {
+        width:100,
+        height: 100,
+        borderRadius: 20
+    },
+    logoView: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        margin:10
+    },
+    logoText: {
+        fontSize:30,
+        textAlign: 'center',
+        color:"#EDEFEE",
+        padding:20
     }
 });
