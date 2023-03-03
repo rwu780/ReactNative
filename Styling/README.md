@@ -19,3 +19,11 @@ const headerStyle = StyleSheet.create({
 
 });
 ```
+
+## Transform
+Transform : 变换
+- 左移，右移
+- 旋转
+
+## Shadow
+Shadow: 要立体感增加Shadow
